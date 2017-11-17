@@ -12,4 +12,10 @@ public class Aoptest {
 		PersonService service=(PersonService) factory.creatProxyInstance(new PersonServiceBean("xxx"));
 		service.update("w", 20);
 	}
+	@Test
+		public void proxyTest2() {
+			CGlibProxyFactory factory=new CGlibProxyFactory();  //new PersonServiceBean("xxx")中字符串作为有权没权参考
+			PersonServiceBean service=(PersonServiceBean) factory.creatProxyInstance(new PersonServiceBean("xxx"));
+			service.save("999");
+		}
 }
