@@ -2,14 +2,25 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-10-31 10:32:44 by Hibernate Tools 3.4.0.CR1 -->
-<hibernate-mapping>
-    <class name="cn.itcast.hibernate.User" table="user">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="native" />
-        </id>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
-        </property>
-    </class>
+<hibernate-mapping package="cn.itcast.hibernate">
+     <!-- name属性->哪个类
+          table属性->对应那个表，默认的表就是类的简单名称
+      -->
+	<class name="User" table="user">
+		<id name="id" type="int" column="ID">
+			<generator class="native" />
+		</id>
+		<!-- 普通属性（数据库中的基本类型、如字符串、日期、数字等） 
+		    name属性：对象中的属性名，必须要有
+		    type属性：类型，如果不写hibernate自动检测
+		    column属性：对象表中的列名，如果没有，则默认为属性名
+		    length属性：长度，不是所有的类型都有长度属性，比如varchar有，int没有，没有则默认255
+		    not-null属性：非空约束，默认false
+		-->
+		<property name="name" type="string" length="20" column="NAME"></property>
+		<property name="age" type="int" column="age_"></property>
+		<property name="birthday" type="date" column="birthday_"></property>
+		<property name="desc" type="text" length="5000" column="`desc`" ></property>
+		<property name="photo" type="binary"  length="102400" column="photo"></property>
+	</class>
 </hibernate-mapping>

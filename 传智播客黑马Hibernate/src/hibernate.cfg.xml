@@ -20,9 +20,9 @@
 		    update:如果不存在就创建，不一样就更新，一样就啥也不做
 		    validate:验证表结构是否一致，如果不一致就抛异常
 		 -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">update</property>
 		
 		<!-- 导入映射文件 -->
-		<mapping resource="cn/itcast/hibernate/User.hbm.xml"/>
+		<!-- <mapping resource="cn/itcast/dao/User.hbm.xml"/> -->
 	</session-factory>
 </hibernate-configuration>

@@ -1,11 +1,9 @@
 package cn.itcast.dao;
 
 import java.util.List;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Order;
 import cn.itcast.hibernate.User;
 import cn.itcast.utils.HibernateUtils;
 

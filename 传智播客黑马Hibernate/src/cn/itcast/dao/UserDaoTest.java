@@ -1,25 +1,45 @@
 package cn.itcast.dao;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
 
 import cn.itcast.hibernate.User;
-
 public class UserDaoTest {
 	private UserDao userDao = new UserDao();
 
+	@SuppressWarnings("deprecation")
 	@Test
-	public void testSave() {
+	public void testSave() throws IOException {
 		User user = new User();
+		InputStream in=new FileInputStream("d:/test.png");
+		byte[] photo=new byte[in.available()];
+		in.read(photo);
+		in.close();
+		
+		user.setAge(20);
+		user.setBirthday(new Date());
+		user.setDesc("一大段文字，此处省略5000字......");
 		user.setName("李剑");
+		user.setPhoto(photo);
 		userDao.save(user);
 	}
 
 	@Test
-	public void testGetById() {
+	public void testGetById() throws IOException {
 		User user = userDao.getById(1);
-		System.out.println(user.getName() + " " + user.getId());
+		System.out.println(user.toString());
+		
+		OutputStream out=new FileOutputStream("d:/copy.png");
+		out.write(user.getPhoto());
+		out.close();
 	}
 
 	@Test
