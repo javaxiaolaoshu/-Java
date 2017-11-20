@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory name="foo">
+	<!-- 配置数据库信息 -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://bdm245434416.my3w.com/bdm245434416_db</property>
+		<property name="connection.username">bdm245434416</property>
+		<property name="connection.password">15738529080</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- 其他配置 -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<!-- 
+		    create:先删除在创建
+		    create-drop:初始化时创建表，SessionFactory执行close()时删除
+		    update:如果不存在就创建，不一样就更新，一样就啥也不做
+		    validate:验证表结构是否一致，如果不一致就抛异常
+		 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 导入映射文件 -->
+		<mapping resource="cn/itcast/hibernate/User.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
